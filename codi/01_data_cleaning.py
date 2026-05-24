@@ -16,6 +16,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 # Definició de rutes
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
+RAW_DIR = os.path.join(DATA_DIR, "raw")
 CLEAN_DIR = os.path.join(DATA_DIR, "clean")
 
 # Crear carpeta clean si no existeix
@@ -89,16 +90,16 @@ file_groups_to_process = {
     },
     'Stores': {
         'patterns': [
-            '서울시 상권분석서비스(점포-상권).csv', 
-            '2019-2024/*점포-상권*.csv'
+            '서울시 상권분석서비스(점포-상권).csv',
+            '*점포-상권*.csv'
         ],
         'clean_name': 'stores_clean.csv',
         'col_map': translations_stores
     },
     'Sales': {
         'patterns': [
-            '서울시 상권분석서비스(추정매출-상권).csv', 
-            '2019-2024/*추정매출-상권*.csv'
+            '서울시 상권분석서비스(추정매출-상권).csv',
+            '*추정매출-상권*.csv'
         ],
         'clean_name': 'sales_clean.csv',
         'col_map': translations_sales
@@ -109,7 +110,10 @@ file_groups_to_process = {
         'col_map': translations_change
     },
     'Workplace Population': {
-        'patterns': ['서울시 상권분석서비스(직장인구-상권배후지).csv', '서울시 상권분석서비스(직장인구-상권).csv'],
+        'patterns': [
+            '서울시 상권분석서비스(직장인구-상권배후지).csv',
+            '서울시 상권분석서비스(직장인구-상권).csv'
+        ],
         'clean_name': 'workplace_pop_clean.csv',
         'col_map': translations_workplace
     }
@@ -127,7 +131,7 @@ for group_name, info in file_groups_to_process.items():
     
     # Buscar tots els arxius que coincideixin amb els patrons
     for pattern in info['patterns']:
-        search_path = os.path.join(DATA_DIR, pattern)
+        search_path = os.path.join(RAW_DIR, pattern)
         matched_files = glob.glob(search_path)
         
         for file_path in matched_files:
