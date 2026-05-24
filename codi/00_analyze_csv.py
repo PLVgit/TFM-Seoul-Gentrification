@@ -6,7 +6,7 @@ import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-data_dir = os.path.join(BASE_DIR, "data")
+data_dir = os.path.join(BASE_DIR, "data", "raw")
 
 files = [
     "서울시 상권분석서비스(길단위인구-상권).csv",
