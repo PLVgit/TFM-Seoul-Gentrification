@@ -10,7 +10,6 @@ El projecte analitza patrons comercials i espacials associats a processos de tra
 TFM-Seoul-Gentrification/
 ├── codi/       # Scripts Python del projecte
 ├── data/       # Dades i resultats generats
-├── memoria/    # Documentació acadèmica del TFM
 └── README.md
 ```
 
